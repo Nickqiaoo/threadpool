@@ -28,7 +28,7 @@ class http_conn {
     static const int READ_BUFFER_SIZE = 2048;
     //写缓冲区的大小
     static const int WRITE_BUFFER_SIZE = 1024;
-    //HTTP请求方法
+    // HTTP请求方法
     enum METHOD {
         GET = 0,
         POST,
@@ -42,20 +42,20 @@ class http_conn {
     };
     //解析客户请求时,主状态机所处的状态
     enum CHECK_STATE {
-        CHECK_STATE_REQUESTLINE = 0, //当前正在分析请求行
-        CHECK_STATE_HEADER, //当前正在分析头部字段
+        CHECK_STATE_REQUESTLINE = 0,  //当前正在分析请求行
+        CHECK_STATE_HEADER,           //当前正在分析头部字段
         CHECK_STATE_CONTENT
     };
     //处理HTTP请求的可能结果
     enum HTTP_CODE {
-        NO_REQUEST,  //请求不完整,需要继续读取客户数据
-        GET_REQUEST, //获得了一个完整的客户请求
-        BAD_REQUEST, //客户请求有语法错误
-        NO_RESOURCE, 
-        FORBIDDEN_REQUEST, //对资源没有访问权限
+        NO_REQUEST,   //请求不完整,需要继续读取客户数据
+        GET_REQUEST,  //获得了一个完整的客户请求
+        BAD_REQUEST,  //客户请求有语法错误
+        NO_RESOURCE,
+        FORBIDDEN_REQUEST,  //对资源没有访问权限
         FILE_REQUEST,
-        INTERNAL_ERROR, //服务器内部错误
-        CLOSED_CONNECTION //客户端已关闭连接
+        INTERNAL_ERROR,    //服务器内部错误
+        CLOSED_CONNECTION  //客户端已关闭连接
     };
     //行的读取状态
     //读取到一个完整的行,行出错,行数据尚不完整
@@ -136,13 +136,13 @@ class http_conn {
     char m_real_file[FILENAME_LEN];
     //请求目标文件的文件名
     char* m_url;
-    //HTTP协议版本号
+    // HTTP协议版本号
     char* m_version;
     //主机名
     char* m_host;
-    //HTTP请求的消息体的长度
+    // HTTP请求的消息体的长度
     int m_content_length;
-    //HTTP请求是否要求保持连接
+    // HTTP请求是否要求保持连接
     bool m_linger;
 
     //请求的目标文件被mmap到内存中的起始位置
